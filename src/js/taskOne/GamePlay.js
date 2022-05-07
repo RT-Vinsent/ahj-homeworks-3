@@ -34,7 +34,7 @@ export default class GamePlay {
       <div class="goblin-img"></div>
       <div class="points">
         <div data-id="hit" class="point">Попаданий: <span>0</span></div>
-        <div data-id="misses" class="point">Промахов: <span>0</span></div>
+        <div data-id="misses" class="point">Пропущено: <span>0</span></div>
       </div>
       <div class="board-container">
         <div data-id="board" class="board"></div>

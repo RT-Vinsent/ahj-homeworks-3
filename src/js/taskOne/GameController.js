@@ -5,7 +5,7 @@ export default class GameController {
   constructor(gamePlay) {
     this.gamePlay = gamePlay; // класс который управляет DOM
     this.gameStarted = false; // индикатор начата игра или нет
-    this.turn = true; // разрешён удар по гному или нет
+    this.turn = true; // разрешён удар по гоблину или нет
   }
 
   init() {
@@ -17,40 +17,42 @@ export default class GameController {
   onNewGameClick() {
     this.gamePlay.startGame(); // удалям окошко конца игры
     this.gamePlay.cellActiveRemove(this.lastCell); // удаляем гоблина
-    this.lastCell = false; // последняя ячейка гнома
+    this.lastCell = false; // последняя ячейка гоблина
     this.hits = 0; // кол-во попаданий по голбину
-    this.misses = 0; // кол-во промахов
+    this.goblinPassed = 0; // кол-во появления гоблинов
     this.gameStarted = true; // идёт игра или нет
 
     this.gamePlay.changeHit(this.hits); // изменяем счётчик попаданий в DOM
-    this.gamePlay.changeMisses(this.misses); // изменяем счётчик промахов в DOM
+    this.gamePlay.changeMisses(this.goblinPassed); // изменяем счётчик промахов в DOM
 
     this.interval(); // запускаем интервал
   }
 
   // клик по ячейкам
   onCellClick(index) {
-    if (!this.gameStarted) { return; }
-    if (this.lastCell === index && this.turn) {
-      this.turn = false; // запрещаем удар по гному
+    if (!this.gameStarted || !this.turn) { return; }
+    if (this.lastCell === index) {
       this.hits += 1; // увеличиваем сётчик попаданий
+      this.goblinPassed -= 1; // уменьшаем сётчик кол-во появления гоблинов
       this.gamePlay.changeHit(this.hits); // изменяем счётчик попаданий в DOM
       this.gamePlay.cellActiveRemove(this.lastCell); // удаляем гоблина
       SoundHit.play();
     }
-    if (this.lastCell !== index) {
-      this.misses += 1; // увеличиваем сётчик промахов
-      this.gamePlay.changeMisses(this.misses); // изменяем счётчик промахов в DOM
-    }
-    this.gameOver(); // проверка на поражение
+    this.turn = false; // запрещаем удар по гному
   }
 
   // рандомное появление гоблина
   goblinAppeared() {
+    this.gameOver(); // проверка на поражение
+
+    this.gamePlay.changeMisses(this.goblinPassed); // изменяем счётчик промахов в DOM
+    this.goblinPassed += 1; // увеличиваем сётчик кол-во появления гоблинов
+
     this.gamePlay.cellActiveRemove(this.lastCell); // удаляем гоблина
     this.lastCell = randomСondition(this.lastCell, this.gamePlay.boardSize); // новая ячейка
     this.gamePlay.cellActiveAdd(this.lastCell); // добавляем гоблина
-    this.turn = true; // разрешаем удар по гному
+
+    this.turn = true; // разрешаем удар по гоблину
   }
 
   // интервальное появление гоблина
@@ -61,9 +63,10 @@ export default class GameController {
 
   // проверка на поражение
   gameOver() {
-    if (this.misses >= 5 && this.gameStarted) {
+    if (this.goblinPassed >= 5 && this.gameStarted) {
       this.gamePlay.endGame();
       this.gameStarted = false;
+      clearInterval(this.timerID); // очищаем интервал
     }
   }
 }

@@ -25,7 +25,7 @@ test('test gameController.onNewGameClick()', () => {
     turn: true,
     lastCell: false,
     hits: 0,
-    misses: 0,
+    goblinPassed: 0,
     gameStarted: true,
   };
 
@@ -39,7 +39,7 @@ test('test gameController.onNewGameClick()', () => {
     turn: gameController.turn,
     lastCell: gameController.lastCell,
     hits: gameController.hits,
-    misses: gameController.misses,
+    goblinPassed: gameController.goblinPassed,
     gameStarted: gameController.gameStarted,
   };
 
@@ -53,9 +53,9 @@ test.each([
   [6, false, false],
 ])(
   ('test gameController.gameOver()'),
-  (misses, gameStarted, expected) => {
+  (goblinPassed, gameStarted, expected) => {
     const gameController = new GameController(gamePlay);
-    gameController.misses = misses;
+    gameController.goblinPassed = goblinPassed;
     gameController.gameStarted = gameStarted;
 
     gameController.gameOver();
@@ -95,6 +95,7 @@ test('test gameController.onCellClick() lastCell === index', () => {
   const expected = {
     turn: false,
     hits: 6,
+    goblinPassed: 2,
   };
 
   const gameController = new GameController(gamePlay); // создание класса GameController
@@ -102,28 +103,15 @@ test('test gameController.onCellClick() lastCell === index', () => {
   gameController.lastCell = 1;
   gameController.turn = true;
   gameController.hits = 5;
+  gameController.goblinPassed = 3;
 
   gameController.onCellClick(1);
 
   const received = {
     turn: gameController.turn,
     hits: gameController.hits,
+    goblinPassed: gameController.goblinPassed,
   };
-
-  expect(received).toEqual(expected);
-});
-
-test('test gameController.onCellClick() lastCell !== index', () => {
-  const expected = 3;
-
-  const gameController = new GameController(gamePlay); // создание класса GameController
-  gameController.gameStarted = true;
-  gameController.lastCell = 1;
-  gameController.misses = 2;
-
-  gameController.onCellClick(2);
-
-  const received = gameController.misses;
 
   expect(received).toEqual(expected);
 });
