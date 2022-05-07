@@ -1,0 +1,167 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #38444c;
+  border: #697278;
+  color: #f0f2f3;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", "Trebuchet MS", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* отключает синий фон на телефоне при клике */
+}
+
+.nav {
+  display: flex;
+}
+
+.task {
+  display: flex;
+  margin: 10px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  min-width: 240px;
+  max-width: 500px;
+  /* width: 500px; */
+  border: 1px solid #0c1e3b;
+  border-radius: 4px 38px;
+}
+
+H2 {
+  text-align: center;
+  margin: 10px auto 5px;
+}
+
+.board-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.board {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+
+  cursor: url("../img/hammer50.png") 5 20, pointer;
+}
+
+.cell {
+  flex-wrap: wrap;
+  
+  width: calc(25% - 12px);
+  padding-top: calc(25%/2 - 12px);
+  padding-bottom: calc(25%/2 - 12px);
+
+  margin: 6px;
+
+  border: 1px solid #001b726e;
+  border-radius: 50%;
+  
+  background-color: #0c1e3b;
+  box-sizing: border-box;
+}
+
+.cell:active {
+  cursor: url("../img/hammer50rotate.png") 5 20, pointer;
+}
+
+.goblin-img {
+  content: url("../img/GracefulMiniatureBustard-small.gif");
+  margin: 10px;
+  max-width: 90%;
+  min-width: 240px;
+  width: 90%;
+  border-radius: 20px;
+}
+
+.points {
+  display: flex;
+  width: 100%;
+  margin-top: -50px;
+  margin-bottom: 20px;
+  justify-content: space-around;
+}
+
+.point {
+  padding: 5px 9px;
+  background-color: #001b72a2;
+  border-radius: 33px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 7px 15px;
+  /* padding: 7px 40px; */
+  margin: 15px;
+
+  font-family: inherit;
+
+  border: 1px solid #001b726e;
+  border-radius: 4px 15px;
+
+  color: #f0f2f3;
+  background-color: #0c1e3b;
+
+  cursor: pointer;
+}
+
+@keyframes distance {
+  from {background-size: 0%;}
+  to {background-size: 96%}
+}
+
+.active {
+  background: center no-repeat url("../img/goblin.png");
+  background-size: 96%;
+  background-color: #0c1e3b;
+
+  border-radius: 50%;
+  animation: distance 0.2s linear 0s normal;
+}
+
+/* @keyframes spin-distance {
+  from { transform:scale(1) rotate(0deg); }
+  to { transform:scale(0.5) rotate(90deg); }
+}
+
+.active:active {
+  animation: spin-distance 0.2s linear 0s normal;
+} */
+
+.gameOver {
+  position: absolute;
+  z-index: 99;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 78%;
+  height: 78%;
+  top: 0;
+  left: 0;
+
+  margin: 1%;
+  padding: 10%;
+
+  font-size: 28px;
+
+  background-color: #40454ea2;
+  border-radius: 40px;
+  pointer-events: none;
+}
