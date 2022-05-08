@@ -1,14 +1,16 @@
 /* eslint-disable no-console */
-import TaskMenu from './TaskMenu';
+import HomeWorkMenu from './HomeWorkMenu';
 
 const containerNav = document.getElementById('nav');
 const containerTaskOne = document.getElementById('taskOne');
+const containerTaskTwo = document.getElementById('taskTwo');
 
-const taskMenu = new TaskMenu();
+const homeWorkMenu = new HomeWorkMenu();
 
-taskMenu.bindToDOM(containerNav);
-taskMenu.bindTaskOneToDOM(containerTaskOne);
+homeWorkMenu.bindToDOM(containerNav);
+homeWorkMenu.bindTaskOneToDOM(containerTaskOne);
+homeWorkMenu.bindTaskTwoToDOM(containerTaskTwo);
 
-taskMenu.drawUI();
+homeWorkMenu.drawUI();
 
 console.log('app started');

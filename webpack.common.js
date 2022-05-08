@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: '[name][ext][query]', // add this line
     // publicPath: '/', // эта штука, что бы менять путь
+    clean: true, // для очистки папки dist при новом билде
   },
   module: {
     rules: [
@@ -38,7 +39,7 @@ module.exports = {
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 10 * 1024, // 40kb
+            maxSize: 40 * 1024, // 40kb
           },
         },
       },

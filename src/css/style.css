@@ -13,6 +13,7 @@ body {
   font-size: 16px;
   box-sizing: border-box;
   font-family: "Comic Sans MS", "Trebuchet MS", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+  user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* отключает синий фон на телефоне при клике */
 }
 
@@ -31,11 +32,12 @@ body {
   /* width: 500px; */
   border: 1px solid #0c1e3b;
   border-radius: 4px 38px;
+  background-color: #44525c;
 }
 
 H2 {
   text-align: center;
-  margin: 10px auto 5px;
+  margin: 10px;
 }
 
 .board-container {
@@ -80,8 +82,11 @@ H2 {
   margin: 10px;
   max-width: 90%;
   min-width: 240px;
-  width: 90%;
+  width: 500px;
+  min-height: 135px;
   border-radius: 20px;
+
+  background-color: #0c1e3b;
 }
 
 .points {
@@ -119,6 +124,15 @@ H2 {
   cursor: pointer;
 }
 
+.btn:hover {
+  box-shadow: 0px 0px 15px 2px #0c1e3b;
+}
+
+.btn:active {
+  box-shadow: 0px 0px 15px 2px #071730;
+  background-color: #041125;
+}
+
 @keyframes distance {
   from {background-size: 0%;}
   to {background-size: 96%}
@@ -132,15 +146,6 @@ H2 {
   border-radius: 50%;
   animation: distance 0.2s linear 0s normal;
 }
-
-/* @keyframes spin-distance {
-  from { transform:scale(1) rotate(0deg); }
-  to { transform:scale(0.5) rotate(90deg); }
-}
-
-.active:active {
-  animation: spin-distance 0.2s linear 0s normal;
-} */
 
 .gameOver {
   position: absolute;
@@ -164,4 +169,157 @@ H2 {
   background-color: #40454ea2;
   border-radius: 40px;
   pointer-events: none;
+}
+
+.top-tasks-container {
+  width: 100%;
+  padding-bottom: 20px;
+
+  background: linear-gradient( #919191, transparent 1px), linear-gradient( 90deg, #919191, transparent 1px);
+	background-size: 20px 20px;
+	background-position: center center;
+
+  border-radius: 0 0 0 40px;
+}
+
+.top-tasks-container__header {
+  padding: 11px 20px;
+  /* font-size: 1.15em; */
+}
+
+.filter {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 90%;
+  margin: auto;
+}
+
+[data-id=filter-text] {
+  width: 100%;
+  /* height: 28px; */
+  padding: 10px 30px 10px 12px;
+  margin: 0;
+  font-size: 16px;
+
+  border: 1px solid #0c1e3b;;
+  border-radius: 15px;
+
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+[data-id=filter-text]:focus{
+  /* outline: 1px solid #0c1e3b; */
+  box-shadow: 0px 0px 20px 2px #0c1e3b;
+}
+
+@keyframes glow {
+  0% {
+  /* border-color: #0062ff; */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3), inset 0 0 5px rgba(255, 0, 0, .2);
+  }	
+  100% {
+  /* border-color: #0062ff; */
+  box-shadow: 0 0 20px rgba(255, 0, 0, .9), inset 0 0 10px rgba(255, 0, 0, .7);
+  }
+}
+
+.error-add {
+  animation: glow 500ms ease-out infinite alternate;
+}
+
+.filter-btn-add {
+  /* width: 8%; */
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 1px;
+  right: 0px;
+  /* margin-left: -26px; */
+  background-color: transparent;
+  background-image: url('../img/add.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-left: 1px solid #0c1e3b;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  width: 39px;
+  height: 39px;
+}
+
+.filter-btn-add:hover {
+  background-color: #7fa9ec31;
+}
+
+.filter-btn-add:active {
+  background-color: #7fa9ec31;
+  background-size: 60%;
+}
+
+.pinned {
+  margin: auto;
+  /* border: 1px solid red; */
+  width: 90%;
+}
+
+.task-element {
+  display: flex;
+  margin: 3px auto;
+  padding: 5px;
+
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #0c1e3b;;
+  border-radius: 15px;
+
+  background-color: #7c848a8c;
+
+  box-shadow: 0px 0px 3px 0px #0c1e3b;
+}
+
+.task-element-name {
+  padding: 5px;
+}
+
+.btn-pinned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+
+  min-width: 26px;
+  width: 26px;
+  height: 26px;
+
+  font-size: 18px;
+
+  border: 1px solid #0c1e3b;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.btn-pinned:hover {
+  box-shadow: inset 0px 0px 3px 0px #0c1e3b;
+}
+
+.btn-pinned:active {
+  background-color: #bfc5c98c;
+}
+
+.task-element:hover  {
+  background-color: #28436ebe;
+}
+
+.task-element:active  {
+  background-color: #28436ebe;
 }
