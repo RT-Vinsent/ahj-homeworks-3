@@ -6,10 +6,6 @@ export default class TopTasksPlay {
     this.valueListeners = [];
   }
 
-  init() {
-    this.drawUI();
-  }
-
   // присваиваем классу контейнер
   bindToDOM(container) {
     if (!(container instanceof HTMLElement)) {
