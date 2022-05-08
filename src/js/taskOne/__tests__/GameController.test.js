@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import GamePlay from '../taskOne/GamePlay';
-import GameController from '../taskOne/GameController';
-import SoundHit from '../taskOne/SoundHit';
+import GamePlay from '../GamePlay';
+import GameController from '../GameController';
+import SoundHit from '../SoundHit';
 
-jest.mock('../taskOne/GamePlay');
-jest.mock('../taskOne/SoundHit');
+jest.mock('../GamePlay');
+jest.mock('../SoundHit');
 beforeEach(() => { jest.resetAllMocks(); });
 
 const gamePlay = new GamePlay();

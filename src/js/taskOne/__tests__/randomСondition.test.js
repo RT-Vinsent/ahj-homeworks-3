@@ -1,4 +1,4 @@
-import randomСondition from '../taskOne/randomСondition';
+import randomСondition from '../randomСondition';
 
 const lastCell = 1; // последняя активная ячейка
 const boardSize = 2; // размер поля
