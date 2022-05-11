@@ -32,8 +32,8 @@ export default class TopTasksPlay {
       </H2>
       <div class="top-tasks-container">
         <div class="top-tasks-container__header">TOP Tasks</div>
-        <form data-id="filter" class="filter">
-          <input data-id="filter-text" name="filter-text" autocomplete="off">
+        <form data-id="filter" class="form">
+          <input data-id="filter-text" class="field" name="filter-text" autocomplete="off">
           <button data-id="filter-text-add" class="filter-btn-add"></button>
         </form>
         <div class="top-tasks-container__header">Pinned</div>
