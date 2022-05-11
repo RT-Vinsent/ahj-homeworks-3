@@ -1,4 +1,4 @@
-import SoundHit from './SoundHit';
+// import SoundHit from './SoundHit';
 import randomСondition from './randomСondition';
 
 export default class GameController {
@@ -36,7 +36,7 @@ export default class GameController {
       this.goblinPassed -= 1; // уменьшаем сётчик кол-во появления гоблинов
       this.gamePlay.changeHit(this.hits); // изменяем счётчик попаданий в DOM
       this.gamePlay.cellActiveRemove(this.lastCell); // удаляем гоблина
-      SoundHit.play();
+      // SoundHit.play();
     }
     this.turn = false; // запрещаем удар по гному
   }

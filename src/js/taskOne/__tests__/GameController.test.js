@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import GamePlay from '../GamePlay';
 import GameController from '../GameController';
-import SoundHit from '../SoundHit';
+// import SoundHit from '../SoundHit';
 
 jest.mock('../GamePlay');
-jest.mock('../SoundHit');
+// jest.mock('../SoundHit');
 beforeEach(() => { jest.resetAllMocks(); });
 
 const gamePlay = new GamePlay();
@@ -18,7 +18,7 @@ gamePlay.cellActiveRemove.mockReturnValue(console.log('метод .gamePlay.cell
 gamePlay.cellActiveAdd.mockReturnValue(console.log('метод .gamePlay.cellActiveAdd был вызван'));
 
 // делаем заглушку на функцию SoundHit.play
-SoundHit.play = jest.fn(() => console.log('метод .soundHit'));
+// SoundHit.play = jest.fn(() => console.log('метод .soundHit'));
 
 test('test gameController.onNewGameClick()', () => {
   const expected = {
