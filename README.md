@@ -16,7 +16,7 @@
 
 ### Игра с гоблинами
 
-![](./pic/GracefulMiniatureBustard-small.gif)
+![](https://github.com/RT-Vinsent/ahj-homeworks/raw/simplification/events/pic/GracefulMiniatureBustard-small.gif)
 
 #### Легенда
 
@@ -47,7 +47,7 @@
 
 Вы разрабатываете трекер задач, в котором есть возможность отображать назначенные пользователю задачи. Выглядеть это должно примерно так, как на экране:
 
-![](./pic/tasks.png)
+![](https://github.com/RT-Vinsent/ahj-homeworks/raw/simplification/events/pic/tasks.png)
 
 Пользователь может фильтровать и добавлять (вот так вот решили проектировщики и заказчик приложения) задачи с помощью поля ввода. Некоторые задачи можно закреплять ("pin").
 
@@ -89,7 +89,7 @@
 
 Приложение должно выглядеть следующим образом:
 
-![](./pic/gallery.png)
+![](https://github.com/RT-Vinsent/ahj-homeworks/raw/simplification/events/pic/gallery.png)
 
 Функциональность:
 1. Добавлять можно как по кнопке "Добавить" так и по клавише Enter (подумайте, как это реализовать)
